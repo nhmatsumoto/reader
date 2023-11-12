@@ -12,9 +12,14 @@
 //configurar duração da leitura
 //configurar volume do som
 
-const inputText : string = (<HTMLTextAreaElement>document.getElementById("inputTextArea")).value;
-let wordRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputRate')).value);
-let blockRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputBlockRate')).value);
+// const inputText : string = (<HTMLTextAreaElement>document.getElementById("inputTextArea")).value;
+// let wordRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputRate')).value);
+// let blockRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputBlockRate')).value);
+
+
+const inputText : string = "A programação orientada a eventos é um paradigma de programação em que o fluxo do programa é determinado por eventos que ocorrem no sistema. Um evento pode ser qualquer coisa, desde uma interação do usuário, como clicar em um botão, até eventos internos do sistema, como a conclusão de uma tarefa.";
+let wordRate: number = 300;
+let blockRate: number = 5;
 
 function splitText(text: string): string[] {
     return text.split(/\s+/);
@@ -41,11 +46,5 @@ function PrintWords(textInput: string, wordHz: number, blockSize: number): void 
     }, wordHz);
 }
 
-
-function startToRead(){
-
-    calcTime(inputText);
-    PrintWords(inputText, wordRate, 1);
-    
-}
-
+calcTime(inputText);
+PrintWords(inputText, wordRate, 1);
