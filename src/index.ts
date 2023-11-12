@@ -11,7 +11,8 @@
 //configurar frequência de exibição dos blocos
 //configurar duração da leitura
 //configurar volume do som
-const inputT: string = "aaaa aaaa aaa";
+
+const inputT = 'A programação orientada a eventos é um paradigma de programação em que o fluxo do programa é determinado por eventos que ocorrem no sistema. Um evento pode ser qualquer coisa, desde uma interação do usuário, como clicar em um botão, até eventos internos do sistema, como a conclusão de uma tarefa.'
 let wordHz: number = 300; //MS
 
 function splitText(text: string): string[] {
@@ -38,22 +39,21 @@ function PrintWord(textInput: string, wordHz: number): void {
 }
 
 // Print a block of words
-// function PrintWordBlock(textInput: string, wordHz: number): void {
-//     const words: string[] = textInput.split(/\s+/);
-//     let output: string = '';
-//     let numWords: number = 2;
+function PrintWordBlock(textInput: string, wordHz: number, blockSize: number): void {
+    const words: string[] = splitText(textInput);
+    let index: number = 0;
 
-//     for (let i: number = 0; i < words.length; i += numWords) {
-//         output += `Palavras ${i + 1}-${i + numWords}: `;
+    const interval: NodeJS.Timeout = setInterval(() => {
+        if (index < words.length) {
+            const blockEnd = Math.min(index + blockSize, words.length);
+            const block = words.slice(index, blockEnd).join(' ');
+            document.getElementById("aa")!.innerHTML = block;
+            index += blockSize;
+        } else {
+            clearInterval(interval);
+        }
+    }, wordHz);
+}
 
-//         for (let j: number = i; j < i + numWords && j < words.length; j++) {
-//             output += words[j] + ' ';
-//         }
-
-//         output += '<br>';
-//     }
-
-//     document.getElementById('output')!.innerHTML = output;
-// }
-
-PrintWord(inputT, wordHz);
+// PrintWord(inputT, wordHz);
+PrintWordBlock(inputT, wordHz, 3);
