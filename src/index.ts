@@ -47,4 +47,4 @@ function PrintWords(textInput: string, wordHz: number, blockSize: number): void 
 }
 
 calcTime(inputText);
-PrintWords(inputText, wordRate, 1);
+PrintWords(inputText, wordRate, blockRate);
