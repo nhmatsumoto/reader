@@ -23,23 +23,8 @@ function calcTime(text: string): void {
     document.getElementById("timeCount")!.innerHTML = ((splitText(text).length * wordHz) / 1000).toString();
 }
 
-// Print word by word
-function PrintWord(textInput: string, wordHz: number): void {
-    const words: string[] = splitText(textInput);
-    let index: number = 0;
-
-    const interval: NodeJS.Timeout = setInterval(() => {
-        if (index < words.length) {
-            document.getElementById("aa")!.innerHTML = words[index];
-            index++;
-        } else {
-            clearInterval(interval);
-        }
-    }, wordHz);
-}
-
 // Print a block of words
-function PrintWordBlock(textInput: string, wordHz: number, blockSize: number): void {
+function PrintWords(textInput: string, wordHz: number, blockSize: number): void {
     const words: string[] = splitText(textInput);
     let index: number = 0;
 
@@ -55,5 +40,4 @@ function PrintWordBlock(textInput: string, wordHz: number, blockSize: number): v
     }, wordHz);
 }
 
-// PrintWord(inputT, wordHz);
-PrintWordBlock(inputT, wordHz, 3);
+PrintWords(inputT, wordHz, 1);
