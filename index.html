@@ -5,21 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reader v1</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./dist/bundle.js"></script>
 </head>
 <body>
     <header>
         <h3>
             <p id="timeCount"></p>
         </h3>
+
+        <div class="inputs">
+            <form>
+                <label for="inputTextArea">Informe um texto:</label>
+                <textarea id="inputTextArea" name="inputTextArea" rows="4" cols="50"></textarea>
+    
+                <label for="inputRate">Informe a taxa de impressão (MS):</label>
+                <input type="range" id="inputRate" name="inputRate">
+    
+                <label for="inputBlockRate">Informe a quantidade de palavras por bloco:</label>
+                <input type="range" id="inputBlockRate" name="inputBlockRate">
+    
+               
+                <input type="button" id="btnStart" onclick="startToRead()" value="Start">
+            </form>
+           
+        </div>  
+
     </header>
 
-    <dic class="container">
+    
+
+    <div class="container">
         <h1>
             <p id="aa"></p>
         </h1>
-    </dic>
+    </div>
     
-    <script src="./dist/bundle.js"></script>
 </body>
 </html>
