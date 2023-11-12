@@ -12,8 +12,10 @@
 //configurar duração da leitura
 //configurar volume do som
 
+import database from './database';
 
-const inputT = "Simultaneidade otimista O EF Core implementa a simultaneidade otimista";
+
+const inputT = database.Get();
 let wordHz = 300; //MS
 
 function splitText(text){
@@ -24,6 +26,7 @@ function calcTime(text) {
     document.getElementById("timeCount").innerHTML = ((splitText(text).length * wordHz) / 1000).toString();
 }
 
+//Print word by word
 function PrintWord(textInput, wordHz) {
     const words = splitText(textInput);
     let index = 0;
@@ -37,6 +40,29 @@ function PrintWord(textInput, wordHz) {
         }
     }, wordHz);
 }
+
+//Print a block of words 
+function PrintWordBlock(textInput, wordHz){
+
+    const words = textInput.split(/\s+/); 
+    let output = '';
+    let numWords = 2;
+
+    for (let i = 0; i < words.length; i += numWords) {
+      output += `Palavras ${i + 1}-${i + numWords}: `;
+
+      for (let j = i; j < i + numWords && j < words.length; j++) {
+        output += words[j] + ' ';
+      }
+
+      output += '<br>';
+    }
+
+    document.getElementById('output').innerHTML = output;
+
+}
+
+//PrintWordBlock(inputT, 3000);
 
 PrintWord(inputT, wordHz);
 calcTime(inputT, wordHz);

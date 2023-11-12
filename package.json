@@ -1,0 +1,19 @@
+{
+  "name": "rsvp-reader",
+  "version": "1.0.0",
+  "description": "Rapid Serial Visual Presentation (RSVP) task, a method involving the rapid display of texts or images for observers to read or identify targets quickly. This technique is commonly used in linguistics, neuroscience, and cognitive psychology to examine reading rates, visual impairments, dyslexia, and attention research.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhmatsumoto/reader.git"
+  },
+  "author": "Nilton H. Matsumoto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhmatsumoto/reader/issues"
+  },
+  "homepage": "https://github.com/nhmatsumoto/reader#readme"
+}
