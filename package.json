@@ -4,7 +4,8 @@
   "description": "Rapid Serial Visual Presentation (RSVP) task, a method involving the rapid display of texts or images for observers to read or identify targets quickly. This technique is commonly used in linguistics, neuroscience, and cognitive psychology to examine reading rates, visual impairments, dyslexia, and attention research.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.ts",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/nhmatsumoto/reader/issues"
   },
-  "homepage": "https://github.com/nhmatsumoto/reader#readme"
+  "homepage": "https://github.com/nhmatsumoto/reader#readme",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
