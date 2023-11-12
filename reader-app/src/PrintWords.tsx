@@ -16,42 +16,46 @@
 // let wordRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputRate')).value);
 // let blockRate: number = parseFloat((<HTMLInputElement>document.getElementById('inputBlockRate')).value);
 import React, { useState, useEffect } from 'react';
+import { PrintWordsProps } from './Type';
 
 export const SplitText = (text: string): string[] => {
   return text.split(/\s+/);
 };
 
-interface PrintWordsProps {
-  textInput: string;
-  wordHz: number;
-  phaseSize: number;
-}
-
-export const PrintWords = ({ textInput, wordHz, phaseSize } : PrintWordsProps) => {
+export const PrintWords = ({ textArea, wordFrequency, wordsPerBlock } : PrintWordsProps) => {
   const [displayedText, setDisplayedText] = useState<string>('');
-  const words: string[] = SplitText(textInput);
-  let index: number = 0;
+  const [startPrinting, setStartPrinting] = useState<boolean>(false);
 
   useEffect(() => {
-    const interval: NodeJS.Timeout = setInterval(() => {
-      if (index < words.length) {
-        const blockEnd = Math.min(index + phaseSize, words.length);
+    let index = 0;
+
+    const intervalId = setInterval(() => {
+      if (startPrinting && index < words.length) {
+        const blockEnd = Math.min(index + wordsPerBlock, words.length);
         const block = words.slice(index, blockEnd).join(' ');
         setDisplayedText(block);
-        index += phaseSize;
+        index += wordsPerBlock;
       } else {
-        clearInterval(interval);
+        clearInterval(intervalId);
       }
-    }, wordHz);
+    }, wordFrequency);
 
-    return () => clearInterval(interval); // Clear the interval on component unmount
-  }, [textInput, wordHz, phaseSize]);
+    return () => clearInterval(intervalId); // Clear the interval on component unmount
+  }, [textArea, wordFrequency, wordsPerBlock, startPrinting]);
 
-  return displayedText;
-};
+  const handleStartPrinting = () => {
 
-export const CalcReadTime = (text: string, phaseSize: number): number => {
-  return (SplitText(text).length * phaseSize) / 1000;
+    setStartPrinting(true);
+  };
+
+  const words: string[] = SplitText(textArea);
+
+  return (
+    <div>
+      <button onClick={handleStartPrinting}>Start</button>
+      <div>{displayedText}</div>
+    </div>
+  );
 };
 
 
