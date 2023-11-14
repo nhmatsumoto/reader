@@ -5,32 +5,44 @@ import { PrintWords } from './PrintWords';
 
 function App() {
 
-  const wordsPerBlock = 2;
-
   const [textArea, setTextArea] = useState<string>('');
-  const [wordFrequency, setWordFrequency] = useState<number>(0);
+  const [wordFrequency, setWordFrequency] = useState<number>(300);
+  const [wordsPerBlock, setWordsPerBlock] = useState<number>(1);
 
   const handleTextArea = (event:ChangeEvent<HTMLTextAreaElement>) => {
     setTextArea(event.target.value);
   }
 
-  const handleWordFrequencyInput = (event:ChangeEvent<HTMLInputElement>) => {
+  const handleWordFrequency = (event:ChangeEvent<HTMLInputElement>) => {
     setWordFrequency(Number(event.target.value));
+  }
+
+  const handleWordsPerBlock = (event:ChangeEvent<HTMLInputElement>) => {
+    setWordsPerBlock(Number(event.target.value));
   }
 
   return (
     <div>
       <header>
-        <textarea id="textArea" name="textArea" rows={4} cols={50} value={textArea} onChange={handleTextArea} />
+
+        <input type="file" />
+
+        <label htmlFor="textArea">Texto:</label>
+        <br />
+        <textarea className="textArea" name="textArea" rows={4} cols={50} value={textArea} onChange={handleTextArea} />
+        <br />
+
+        <label htmlFor="frequencyOfWords">Frequência em MS:</label>
+        <br />
+        <input className='frequencyWords' type="number" name="frequencyOfWords" onChange={handleWordFrequency} min={0} max={10000} defaultValue={300} />
+        <br />
+
+        <label htmlFor='blockSize'>Quantidade de palavras:</label>
+        <br></br>
+        <input className='wordsPerBlock' type="number" name="blockSize" onChange={handleWordsPerBlock} min={0} max={10000} defaultValue={1} />
         
-        <br />
-        <label htmlFor="frequencyOfWords">Frequência em MS: {wordFrequency}</label>
-        <br />
-        <input type="range" name="frequencyOfWords" onChange={handleWordFrequencyInput} min={0} max={10000}/>
-
-        <hr />
-
       </header>
+
       <main>
         <h1>
           {PrintWords({textArea, wordFrequency, wordsPerBlock})}

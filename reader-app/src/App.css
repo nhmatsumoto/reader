@@ -1,14 +1,52 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header {
+  width: 300px; /* Largura do cabeçalho fixo à esquerda */
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  margin-left: 300px; /* Largura do cabeçalho + margem para evitar sobreposição */
+  box-sizing: border-box;
+}
+
+
+h1 {
+  color: #333;
+}
+
+.textArea {
+  width: 100%;
+  height: 200px;
+}
+
+.wordsPerBlock {
+  width: 100%;
+  height: 45px;
+  font-size: large;
+
+}
+
+.frequencyWords {
+  width: 100%;
+  height: 45px;
+  font-size: large;
+}
+
+.btnStart {
+  width: 250px;
+  height: 50px;
+  font-size: large;
 }
